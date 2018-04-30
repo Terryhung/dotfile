@@ -69,3 +69,18 @@ autoload run-help
 HELPDIR=/usr/local/share/zsh/help
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#this is unlikely to change so make it all statically assigned
+POST_1_7_2_GIT=$(git_compare_version "1.7.2")
+#clean up the namespace slightly by removing the checker function
+unset -f git_compare_version
+
+
+source ~/zsh-git-prompt/zshrc.sh
+# an example prompt
+PROMPT='%B%m%~%b$(git_super_status) %# '
+
+export PATH="$HOME/tools/DroiCLI:$PATH"
+
